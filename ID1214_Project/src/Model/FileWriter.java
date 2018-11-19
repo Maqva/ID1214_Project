@@ -20,6 +20,6 @@ package Model;
  *
  * @author Magnus
  */
-public class Recipe {
+public class FileWriter {
     
 }
