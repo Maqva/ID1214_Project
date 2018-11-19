@@ -21,5 +21,9 @@ package Model;
  * @author Magnus
  */
 public class Ingredient {
+
+    public String getName() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
