@@ -10,5 +10,5 @@ package Model;
  * @author Magnus
  */
 public class Recipe {
-    
+    private String [] ingredients;
 }
