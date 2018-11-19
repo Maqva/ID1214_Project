@@ -16,10 +16,26 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Magnus
  */
 public class RecipeTree {
+    private ArrayList<Node> root;
     
+    private class Node{
+        private Ingredient ingredient;
+        private ArrayList<Recipe> recipes;
+        private ArrayList<Node> branches;
+        
+        public String getIngredient(){
+            return ingredient.getName();
+        }
+        
+        public ArrayList<Recipe> getRecipe(){
+            return recipes;
+        }
+    }
 }
