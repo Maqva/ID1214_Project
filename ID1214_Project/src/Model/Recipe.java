@@ -16,10 +16,42 @@
  */
 package Model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
 /**
  *
  * @author Magnus
  */
 public class Recipe {
+    private Ingredient[] ingredients;
+    private String instructions;
+    private String name;
     
+    public Recipe(String name, String instructions, Ingredient[] ingredients){
+        this.name = name;
+        this.instructions = instructions;
+        ArrayList<Ingredient> tempSorter = new ArrayList();
+        for(Ingredient i : ingredients)
+            tempSorter.add(i);
+        Collections.sort(tempSorter, new Comparator<Ingredient>(){
+            @Override
+            public int compare (Ingredient a, Ingredient b){
+                return a.getName().compareToIgnoreCase(b.getName());
+            }
+        });
+        this.ingredients = new Ingredient[tempSorter.size()];
+        for (int i = 0; i < tempSorter.size(); i++){
+            this.ingredients[i] = tempSorter.get(i);
+        }
+    }
+    
+    public Ingredient[] getIngredients(){
+        return ingredients;
+    }
+    
+    public String getName() {
+        return name;
+    }
 }
