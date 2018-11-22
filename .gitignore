@@ -22,3 +22,5 @@ $RECYCLE.BIN/
 # Operating System Files
 # =========================
 /ID1214_Project/nbproject/private/
+/ID1214_Project/build/
+/ID1214_Project/dist/

@@ -16,10 +16,23 @@
  */
 package Controller;
 
+import Model.Recipe;
+import Model.RecipeTree;
+import java.util.ArrayList;
+
 /**
  *
  * @author Magnus
  */
 public class Controller {
+    private RecipeTree tree;
+    public void startup(){
+        
+    }
     
+    private void buildTree(Recipe[] recipes){
+        for(Recipe r : recipes){
+            tree.addRecipe(r);
+        }
+    }
 }
