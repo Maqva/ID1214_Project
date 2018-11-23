@@ -20,7 +20,7 @@ package Model;
  *
  * @author Magnus
  */
-public class Ingredient{
+public class Ingredient implements Comparable<Ingredient>{
     private String name;
     
     public Ingredient(String name){
@@ -29,6 +29,19 @@ public class Ingredient{
 
     public String getName() {
         return name;
+    }
+
+    /**
+     * Returns a sorting "weight" comparison between two Ingredient instances.
+     * If the calling instance is Heavier, this will return a Negative value.
+     * If both instances are of equal weight this will return 0.
+     * If the calling instance is Lighter, this will return a Positive value.
+     * @param ing the ingredient to compare against.
+     * @return the integer value of the Weight difference between the two ingredients.
+     */
+    @Override
+    public int compareTo(Ingredient ing) {
+        return this.getName().compareToIgnoreCase(ing.getName());
     }
     
 }

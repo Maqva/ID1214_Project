@@ -40,6 +40,11 @@ public class Main {
         Recipe tempR2 = new Recipe("Apple Pie", "SHove it in the oven", temp2);
         tempTree.addRecipe(tempR1);
         tempTree.addRecipe (tempR2);
-        System.out.println("blev klar med "+tempTree);
+        int appleApple = temp1[0].compareTo(temp2[0]);
+        int appleApricot = temp1[0].compareTo(temp1[3]);
+        int orangeApple = temp1[2].compareTo(temp1[0]);
+        System.out.println("jämförelsen mellan de två äpplena gav: "+appleApple
+                + "\njämförelsen mellan Apple och Apricot gav: "+appleApricot
+                + "\njämförelsen mellan Orange och Apple gav: " + orangeApple);
     }
 }

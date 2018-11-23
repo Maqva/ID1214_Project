@@ -17,8 +17,8 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 
 /**
  *
@@ -33,14 +33,8 @@ public class Recipe {
         this.name = name;
         this.instructions = instructions;
         ArrayList<Ingredient> tempSorter = new ArrayList();
-        for(Ingredient i : ingredients)
-            tempSorter.add(i);
-        Collections.sort(tempSorter, new Comparator<Ingredient>(){
-            @Override
-            public int compare (Ingredient a, Ingredient b){
-                return a.getName().compareToIgnoreCase(b.getName());
-            }
-        });
+        tempSorter.addAll(Arrays.asList(ingredients));
+        Collections.sort(tempSorter);
         this.ingredients = new Ingredient[tempSorter.size()];
         for (int i = 0; i < tempSorter.size(); i++){
             this.ingredients[i] = tempSorter.get(i);
