@@ -18,6 +18,7 @@ package Model;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Queue;
 
 /**
@@ -32,20 +33,55 @@ public class RecipeTree {
     }
     
     public Recipe[] searchRecipesInTree(Ingredient[] ingredients, int errorMargain){
-        return null;
+        ArrayList<Recipe> found = new ArrayList();
+        recursiveTreeSearch(root, found, ingredients, 0, errorMargain, 0);
+        int foundRecipes = found.size();
+        if(foundRecipes > 0){
+            return found.toArray(new Recipe[foundRecipes]);
+        }
+        else
+            return null;
+    }
+    
+    private void recursiveTreeSearch(Node n, ArrayList<Recipe> recipeList, Ingredient[] ingArray, 
+            int ingIndex, int marginError, int matchedIngredientsInBranch){
+        for(Node branch : n.getNodeBranches()){
+            int weight;
+            if(ingIndex < ingArray.length)
+                weight = ingArray[ingIndex].compareTo(branch.getNodeIngredient());
+            else
+                weight = 1;
+            if(weight < 0){
+                while (weight < 0 && ingIndex < ingArray.length - 1){
+                    ingIndex ++;
+                    weight = ingArray[ingIndex].compareTo(branch.getNodeIngredient());
+                }
+            }
+            if(weight  == 0){
+                if(branch.getNodeRecipe() != null)
+                    recipeList.addAll(branch.getNodeRecipe());
+                recursiveTreeSearch(branch, recipeList, ingArray, ingIndex + 1, marginError, matchedIngredientsInBranch + 1);   
+            }
+            else if(marginError > 0 && weight > 0){
+                if(branch.getNodeRecipe() != null && matchedIngredientsInBranch > 0)
+                    recipeList.addAll(branch.getNodeRecipe());
+                recursiveTreeSearch(branch, recipeList, ingArray, ingIndex, marginError - 1, matchedIngredientsInBranch);
+            }
+            else{
+                if(branch.getNodeRecipe() != null && matchedIngredientsInBranch > 0)
+                    recipeList.addAll(branch.getNodeRecipe());
+                return;
+            }
+        }
+        
     }
     
     public void addRecipe(Recipe r){
         Ingredient[] ingredientsToAdd = r.getIngredients();
         ArrayDeque<Ingredient> ingredients = new ArrayDeque();
-        for(Ingredient i : ingredientsToAdd)
-            ingredients.add(i);
+        ingredients.addAll(Arrays.asList(ingredientsToAdd));
         Node lastNode = addNodeToTree(root, ingredients);
         lastNode.addRecipeToNode(r);
-    }
-    
-    private void clearTree(){
-        this.root = new Node(new Ingredient("Root"));
     }
     
     private Node addNodeToTree(Node n, Queue<Ingredient> ingredientQueue){

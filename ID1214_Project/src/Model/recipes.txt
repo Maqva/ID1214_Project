@@ -1,0 +1,9 @@
+fruit sallad
+chop fruit and mix together.
+kiwi,apple,banana,orange,lemon,blueberry,mango
+hot dogs
+boil or fry the hotdog and put it in the bun, add rest on top.
+hotdog,bun,ketchup,custard
+lasagna
+mix sauce, minced meat and lasagna plates and cook in oven
+lasagna plates,minced meat,garlic,onion,milk,flour

@@ -35,10 +35,7 @@ public class Recipe {
         ArrayList<Ingredient> tempSorter = new ArrayList();
         tempSorter.addAll(Arrays.asList(ingredients));
         Collections.sort(tempSorter);
-        this.ingredients = new Ingredient[tempSorter.size()];
-        for (int i = 0; i < tempSorter.size(); i++){
-            this.ingredients[i] = tempSorter.get(i);
-        }
+        this.ingredients = tempSorter.toArray(new Ingredient[tempSorter.size()]);
     }
     
     public Ingredient[] getIngredients(){
