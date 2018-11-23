@@ -18,8 +18,7 @@ package Model;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.Arrays;
 import java.util.Queue;
 
 /**
@@ -33,11 +32,54 @@ public class RecipeTree {
         root = new Node(new Ingredient("ROOT"));
     }
     
+    public Recipe[] searchRecipesInTree(Ingredient[] ingredients, int errorMargain){
+        ArrayList<Recipe> found = new ArrayList();
+        recursiveTreeSearch(root, found, ingredients, 0, errorMargain, 0);
+        int foundRecipes = found.size();
+        if(foundRecipes > 0){
+            return found.toArray(new Recipe[foundRecipes]);
+        }
+        else
+            return null;
+    }
+    
+    private void recursiveTreeSearch(Node n, ArrayList<Recipe> recipeList, Ingredient[] ingArray, 
+            int ingIndex, int marginError, int matchedIngredientsInBranch){
+        for(Node branch : n.getNodeBranches()){
+            int weight;
+            if(ingIndex < ingArray.length)
+                weight = ingArray[ingIndex].compareTo(branch.getNodeIngredient());
+            else
+                weight = 1;
+            if(weight < 0){
+                while (weight < 0 && ingIndex < ingArray.length - 1){
+                    ingIndex ++;
+                    weight = ingArray[ingIndex].compareTo(branch.getNodeIngredient());
+                }
+            }
+            if(weight  == 0){
+                if(branch.getNodeRecipe() != null)
+                    recipeList.addAll(branch.getNodeRecipe());
+                recursiveTreeSearch(branch, recipeList, ingArray, ingIndex + 1, marginError, matchedIngredientsInBranch + 1);   
+            }
+            else if(marginError > 0 && weight > 0){
+                if(branch.getNodeRecipe() != null && matchedIngredientsInBranch > 0)
+                    recipeList.addAll(branch.getNodeRecipe());
+                recursiveTreeSearch(branch, recipeList, ingArray, ingIndex, marginError - 1, matchedIngredientsInBranch);
+            }
+            else{
+                if(branch.getNodeRecipe() != null && matchedIngredientsInBranch > 0)
+                    recipeList.addAll(branch.getNodeRecipe());
+                return;
+            }
+        }
+        
+    }
+    
     public void addRecipe(Recipe r){
         Ingredient[] ingredientsToAdd = r.getIngredients();
         ArrayDeque<Ingredient> ingredients = new ArrayDeque();
-        for(Ingredient i : ingredientsToAdd)
-            ingredients.add(i);
+        ingredients.addAll(Arrays.asList(ingredientsToAdd));
         Node lastNode = addNodeToTree(root, ingredients);
         lastNode.addRecipeToNode(r);
     }
@@ -45,23 +87,24 @@ public class RecipeTree {
     private Node addNodeToTree(Node n, Queue<Ingredient> ingredientQueue){
         Ingredient ing = ingredientQueue.poll();
         if (ing != null){
-            String ingName = ing.getName();
-            ArrayList<Node> branches = n.getBranches();
-            if (branches.size() == 0){
-                n.addNode(ing);
-                return addNodeToTree(n.getBranches().get(0), ingredientQueue);
+            ArrayList<Node> branches = n.getNodeBranches();
+            int branchSize = branches.size();
+            if (branchSize == 0){
+                n.addNodeToBranch(ing);
+                return addNodeToTree(n.getNodeBranches().get(0), ingredientQueue);
             }
-            for (int i = 0; i < branches.size(); i++){
+            for (int i = 0; i < branchSize; i++){
                 Node temp = branches.get(i);
-                if (ingName.compareToIgnoreCase(temp.getIngredient()) == 0)
+                int compareValue =  ing.compareTo(temp.getNodeIngredient());
+                if ( compareValue == 0)
                     return addNodeToTree(temp, ingredientQueue);
-                else if(ingName.compareToIgnoreCase(temp.getIngredient()) < 0){
-                    n.addNode(ing, i);
-                    return addNodeToTree(n.getBranches().get(i), ingredientQueue);
+                else if(compareValue < 0){
+                    n.addNodeToBranch(ing, i);
+                    return addNodeToTree(n.getNodeBranches().get(i), ingredientQueue);
                 }
-                else if (i+1 == branches.size()){
-                    n.addNode(ing);
-                    return addNodeToTree(n.getBranches().get(i+1), ingredientQueue);
+                else if (i+1 == branchSize){
+                    n.addNodeToBranch(ing);
+                    return addNodeToTree(n.getNodeBranches().get(branchSize), ingredientQueue);
                 }
                     
             }
@@ -80,7 +123,7 @@ public class RecipeTree {
             branches = new ArrayList();
         }
         
-        public void addNode (Ingredient ing){
+        public void addNodeToBranch (Ingredient ing){
             Node newNode = new Node(ing);
             branches.add(newNode);
         }
@@ -90,7 +133,7 @@ public class RecipeTree {
          * @param ing
          * @param index 
          */
-        public void addNode (Ingredient ing, int index){
+        public void addNodeToBranch (Ingredient ing, int index){
             Node newNode = new Node(ing);
             branches.add(index, newNode);
         }
@@ -99,15 +142,15 @@ public class RecipeTree {
             recipes.add(r);
         }
         
-        public String getIngredient(){
-            return ingredient.getName();
+        public Ingredient getNodeIngredient(){
+            return this.ingredient;
         }
         
-        public ArrayList<Recipe> getRecipe(){
+        public ArrayList<Recipe> getNodeRecipe(){
             return recipes;
         }
         
-        public ArrayList<Node> getBranches(){
+        public ArrayList<Node> getNodeBranches(){
             return branches;
         }
     }

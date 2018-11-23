@@ -18,7 +18,13 @@ package Temp;
 
 import Model.Ingredient;
 import Model.Recipe;
+import Model.RecipeFileReader;
 import Model.RecipeTree;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,20 +32,31 @@ import Model.RecipeTree;
  */
 public class Main {
     public static void main(String args[]){
-        Ingredient[] temp1 = new Ingredient[4];
-        RecipeTree tempTree = new RecipeTree();
-        temp1[0] = new Ingredient("Apple");
-        temp1[1] = new Ingredient("Pear");
-        temp1[2] = new Ingredient("Orange");
-        temp1[3] = new Ingredient("Apricot");
-        Recipe tempR1 = new Recipe("Fruit Sallad", "just mix it up", temp1);
-        Ingredient[] temp2 = new Ingredient[3];
-        temp2[0] = new Ingredient("Apple");
-        temp2[1] = new Ingredient("Sugar");
-        temp2[2] = new Ingredient("Flour");
-        Recipe tempR2 = new Recipe("Apple Pie", "SHove it in the oven", temp2);
-        tempTree.addRecipe(tempR1);
-        tempTree.addRecipe (tempR2);
-        System.out.println("blev klar med "+tempTree);
+        try {
+            /*Ingredient[] temp1 = new Ingredient[4];
+            RecipeTree tempTree = new RecipeTree();
+            temp1[0] = new Ingredient("Apple");
+            temp1[1] = new Ingredient("Pear");
+            temp1[2] = new Ingredient("Orange");
+            temp1[3] = new Ingredient("Apricot");
+            Recipe tempR1 = new Recipe("Fruit Sallad", "just mix it up", temp1);
+            Ingredient[] temp2 = new Ingredient[3];
+            temp2[0] = new Ingredient("Apple");
+            temp2[1] = new Ingredient("Sugar");
+            temp2[2] = new Ingredient("Flour");
+            Recipe tempR2 = new Recipe("Apple Pie", "SHove it in the oven", temp2);
+            tempTree.addRecipe(tempR1);
+            tempTree.addRecipe (tempR2);
+            Ingredient[] toSearch = {new Ingredient("apricot")};
+            Recipe[] tempOutput = (tempTree.searchRecipesInTree(toSearch, 4));*/
+            RecipeFileReader rfr = new RecipeFileReader();
+            ArrayList<Recipe> tempList = rfr.readFile();
+        System.out.println(tempList);
+        } catch (FileNotFoundException ex) {
+            System.err.println("filen hittads inte.");
+        } catch (IOException ex) {
+            System.err.println("Något gick fel vid fillsning.");
+        }
+        return;
     }
 }
