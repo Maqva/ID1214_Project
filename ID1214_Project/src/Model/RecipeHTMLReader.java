@@ -16,11 +16,6 @@
  */
 package Model;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,19 +23,18 @@ import java.util.regex.Pattern;
  *
  * @author Sothe
  */
-public class IcaUrlReader{
-    private static final String INIT_RECIPE_LIST_PATTERN = "\"ingredients__list\"";
+public class RecipeHTMLReader {
+     private static final String INIT_RECIPE_LIST_PATTERN = "\"ingredients__list\"";
     private static final String INGREDIENT_PATTERN = "amount=\"(\\d+[\\.\\d]\\d*)\".+type=\"(.*)\">(?:\\d+ *\\d*)* (?:\\2 )*(.+)</s";
     private static final String LIST_END_PATTERN = "</ul>";
     
-    public void getURLIngredients(String url){
+    public void getURLIngredients(String[] htmlContent){
         try {
             Pattern listInitPattern = Pattern.compile(INIT_RECIPE_LIST_PATTERN);
             Pattern listIngredientItemPattern = Pattern.compile(INGREDIENT_PATTERN);
             Pattern listEnd = Pattern.compile(LIST_END_PATTERN);
-            String[] strings = getHTMLContent(url);
             int inList = 0;
-            for(String s : strings){
+            for(String s : htmlContent){
                 //System.out.println(s);
                 if(inList == 0){
                     if (listInitPattern.matcher(s).find()){
@@ -63,24 +57,5 @@ public class IcaUrlReader{
         catch (Exception ex) {
             System.err.println("Något gick fel.");
         }
-    }
-           
-    private String[] getHTMLContent(String webaddress) throws Exception {
-        URL url = new URL(webaddress);
-        HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
-        ArrayList<String> content;
-        content = new ArrayList();
-        try (BufferedReader strRdr = new BufferedReader(new InputStreamReader(httpCon.getInputStream()))) {
-            String temp = strRdr.readLine();
-            while(temp != null){
-                temp = temp.replaceAll("^\\s+", "");
-                if (! temp.isEmpty())
-                    content.add(temp);
-                temp = strRdr.readLine();
-            }
-            strRdr.close();
-        }
-        System.out.println("Handled "+url);
-        return content.toArray(new String[1]);
     }
 }

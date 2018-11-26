@@ -16,7 +16,10 @@
  */
 package Temp;
 
-import Model.IcaUrlReader;
+import Model.RecipeHTMLReader;
+import Model.UrlReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,7 +28,13 @@ import java.util.regex.Pattern;
  */
 public class Main {
     public static void main(String args[]){
-        IcaUrlReader test = new IcaUrlReader();
-        test.getURLIngredients("https://www.ica.se/recept/bananpannkaka-med-chiafron-724233/");
+        String[] content;
+        try {
+            content = new UrlReader().getHTMLContent("https://www.ica.se/recept/bananpannkaka-med-chiafron-724233/");
+            RecipeHTMLReader test = new RecipeHTMLReader();
+            test.getURLIngredients(content);
+        } catch (Exception ex) {
+            System.err.println("Något gick fel fid öppningen av url.");
+        }
     }
 }
