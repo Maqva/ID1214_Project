@@ -44,8 +44,9 @@ public class RecipeHTMLReader {
                 }
                 else{
                     Matcher ingredient = listIngredientItemPattern.matcher(s);
+                    System.out.println("Läser rad: "+s);
                     if(ingredient.find()){
-                        System.out.print("hittade; Antal: \""+ingredient.group(1)+"\" mängd typ: \""+ingredient.group(2)+"\" ingrediens: \""+ingredient.group(3)+"\"\n");
+                        System.out.print("****hittade; Antal: \""+ingredient.group(1)+"\" mängd typ: \""+ingredient.group(2)+"\" ingrediens: \""+ingredient.group(3)+"\"\n");
                     }
                     else if (listEnd.matcher(s).find()){
                         inList = 0;

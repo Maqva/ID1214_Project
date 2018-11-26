@@ -18,10 +18,6 @@ package Temp;
 
 import Model.RecipeHTMLReader;
 import Model.UrlReader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  *
@@ -30,7 +26,7 @@ public class Main {
     public static void main(String args[]){
         String[] content;
         try {
-            content = new UrlReader().getHTMLContent("https://www.ica.se/recept/bananpannkaka-med-chiafron-724233/");
+            content = new UrlReader().getHTMLContent("https://www.ica.se/recept/viltlax-554763/");
             RecipeHTMLReader test = new RecipeHTMLReader();
             test.getURLIngredients(content);
         } catch (Exception ex) {
