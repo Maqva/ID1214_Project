@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="id1214_project_fx.FXMLDocumentController">
+    <children>
+      <TabPane prefHeight="400.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Pantry">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="ingredientField" layoutX="164.0" layoutY="297.0" prefHeight="31.0" prefWidth="299.0" />
+                        <Button fx:id="addToPntryBttn" layoutX="24.0" layoutY="297.0" mnemonicParsing="false" onAction="#updatePantry" text="Update Pantry" />
+                        <ScrollPane layoutX="24.0" layoutY="37.0" prefHeight="200.0" prefWidth="406.0">
+                           <content>
+                              <TextArea fx:id="pantryTextaArea" prefHeight="200.0" prefWidth="385.0" />
+                           </content>
+                        </ScrollPane>
+                        <Button fx:id="pntryDelete" layoutX="479.0" layoutY="206.0" mnemonicParsing="false" onAction="#deletePantryItem" prefHeight="26.0" prefWidth="74.0" text="Delete" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Recipes">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="URLButton" layoutX="22.0" layoutY="24.0" mnemonicParsing="false" onAction="#getRecipeFromURL" text="URL" />
+                        <TextField fx:id="URLField" layoutX="104.0" layoutY="24.0" prefHeight="31.0" prefWidth="500.0" promptText="Paste your ICA recipe URL here" />
+                        <TextArea fx:id="recipeInstructionField" layoutX="22.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" />
+                        <TextArea fx:id="recipeIngredientField" layoutX="262.0" layoutY="128.0" prefHeight="200.0" prefWidth="104.0" />
+                        <TextField fx:id="recipeNameField" layoutX="417.0" layoutY="128.0" />
+                        <Button fx:id="recipeSaveButton" layoutX="427.0" layoutY="228.0" mnemonicParsing="false" onAction="#saveRecipe" prefHeight="43.0" prefWidth="141.0" text="Save Recipe" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Search Recipes">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+    </children>
+</AnchorPane>

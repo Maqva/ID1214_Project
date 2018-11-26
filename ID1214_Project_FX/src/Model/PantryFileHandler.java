@@ -31,7 +31,7 @@ import java.util.ArrayList;
 public class PantryFileHandler{
     private final String FILE_PATH = "src/model/pantry.txt";
     
-    public void savePantryToFile(Ingredient[] toSave) throws IOException{
+    public void savePantryToFile(ArrayList<Ingredient> toSave) throws IOException{
         PrintWriter outputWriter = new PrintWriter(new BufferedWriter(new FileWriter(FILE_PATH)));
         for(Ingredient i : toSave){
             String output = i.getName();
@@ -41,7 +41,7 @@ public class PantryFileHandler{
         outputWriter.close();
     }
     
-    public Ingredient[] loadPantry() throws FileNotFoundException, IOException{
+    public ArrayList<Ingredient> loadPantry() throws FileNotFoundException, IOException{
         BufferedReader bfr = new BufferedReader(new FileReader(FILE_PATH));
         String line = bfr.readLine();
         ArrayList<Ingredient> output = new ArrayList();
@@ -53,7 +53,7 @@ public class PantryFileHandler{
         bfr.close();
         int size = output.size();
         if (size > 0)
-            return output.toArray(new Ingredient[size]);
+            return output;
         else
             return null;
     }

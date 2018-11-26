@@ -17,30 +17,45 @@
 package Model;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
  *
  * @author Magnus
  */
-public class RecipeFileReader {
+public class RecipeFileHandler {
     
-    BufferedReader bfr;
-    private final String PATH = "src/model/recipes.txt";
-
-    public RecipeFileReader() throws FileNotFoundException {
-        this.bfr = new BufferedReader(new FileReader(PATH));
+    private final String FILE_PATH = "src/model/recipes.txt";
+    private final String NEWLINE_DELIMITER ="##";
+    
+    
+    public void saveRecipeToFile(ArrayList<Recipe> toSave) throws FileNotFoundException, IOException{
+        PrintWriter outputWriter = new PrintWriter(new BufferedWriter(new FileWriter(FILE_PATH)));
+        for(Recipe r : toSave){
+            outputWriter.println(r.getName());
+            outputWriter.println(r.getInstructions().replaceAll("\n", NEWLINE_DELIMITER));
+            String ingredientString ="";
+            for (Ingredient i : r.getIngredients())
+                ingredientString += (i.getName()+",");
+            outputWriter.println(ingredientString);
+        }
+        outputWriter.flush();
+        outputWriter.close();
     }
     
     public ArrayList<Recipe> readFile() throws IOException{
         ArrayList<Recipe> recipesRead = new ArrayList();
+        BufferedReader bfr = new BufferedReader( new FileReader(FILE_PATH));
         String line = bfr.readLine();
         while(line != null){
             String name = line;
-            String instructions = bfr.readLine();
+            String instructions = bfr.readLine().replaceAll(NEWLINE_DELIMITER, "\n");
             String[] ingredients = bfr.readLine().split(",");
             Ingredient[] ingArray = new Ingredient[ingredients.length];
             for(int i = 0; i < ingredients.length; i++){
@@ -52,5 +67,4 @@ public class RecipeFileReader {
         bfr.close();
         return recipesRead;
     }
-    
 }

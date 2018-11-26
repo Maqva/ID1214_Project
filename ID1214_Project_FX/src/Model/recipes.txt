@@ -1,9 +1,12 @@
 fruit sallad
 chop fruit and mix together.
-kiwi,apple,banana,orange,lemon,blueberry,mango
+apple,banana,blueberry,kiwi,lemon,mango,orange,
 hot dogs
 boil or fry the hotdog and put it in the bun, add rest on top.
-hotdog,bun,ketchup,custard
+bun,custard,hotdog,ketchup,
 lasagna
 mix sauce, minced meat and lasagna plates and cook in oven
-lasagna plates,minced meat,garlic,onion,milk,flour
+flour,garlic,lasagna plates,milk,minced meat,onion,
+Test
+blah##newline##newerlone
+Apple,Crab,Pasta,
