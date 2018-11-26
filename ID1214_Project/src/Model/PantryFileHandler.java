@@ -29,7 +29,7 @@ import java.util.ArrayList;
  * @author Magnus
  */
 public class PantryFileHandler{
-    private final String FILE_PATH = "pantry.txt";
+    private final String FILE_PATH = "src/model/pantry.txt";
     
     public void savePantryToFile(Ingredient[] toSave) throws IOException{
         PrintWriter outputWriter = new PrintWriter(new BufferedWriter(new FileWriter(FILE_PATH)));

@@ -29,7 +29,7 @@ import java.util.ArrayList;
 public class RecipeFileReader {
     
     BufferedReader bfr;
-    private final String PATH = "C:\\Users\\Magnus\\Documents\\GitHub\\ID1214_Project\\ID1214_Project\\src\\Model\\recipes.txt";
+    private final String PATH = "src/model/recipes.txt";
 
     public RecipeFileReader() throws FileNotFoundException {
         this.bfr = new BufferedReader(new FileReader(PATH));
