@@ -16,10 +16,43 @@
  */
 package Model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
  *
  * @author Magnus
  */
 public class Pantry {
+    private ArrayList<Ingredient> inPantry;
     
+    public Pantry(){
+        inPantry = new ArrayList();
+    }
+    
+    public void removeIngredients(Ingredient[] toRemove){
+        for(Ingredient i : toRemove){
+            for (int a = 0; a < inPantry.size(); a++){
+                int comparisonWeight = i.compareTo(inPantry.get(a));
+                if(comparisonWeight < 0)
+                    continue;
+                else if (comparisonWeight == 0)
+                    inPantry.remove(a);
+                else
+                    break;
+            }
+        }
+    }
+    
+    public void addIngredient(Ingredient ing){
+        inPantry.add(ing);
+        Collections.sort(inPantry);
+    }
+    
+    public Ingredient[] getPantryIngredients(){
+        int amt = inPantry.size();
+        if(amt > 0)
+            return inPantry.toArray(new Ingredient[amt]);
+        else return null;
+    }
 }

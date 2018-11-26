@@ -17,6 +17,7 @@
 package Temp;
 
 import Model.Ingredient;
+import Model.PantryFileHandler;
 import Model.Recipe;
 import Model.RecipeFileReader;
 import Model.RecipeTree;
@@ -33,25 +34,19 @@ import java.util.logging.Logger;
 public class Main {
     public static void main(String args[]){
         try {
-            /*Ingredient[] temp1 = new Ingredient[4];
-            RecipeTree tempTree = new RecipeTree();
+            Ingredient[] temp1 = new Ingredient[4];
             temp1[0] = new Ingredient("Apple");
-            temp1[1] = new Ingredient("Pear");
+            temp1[1] = new Ingredient("Pebble");
             temp1[2] = new Ingredient("Orange");
             temp1[3] = new Ingredient("Apricot");
-            Recipe tempR1 = new Recipe("Fruit Sallad", "just mix it up", temp1);
-            Ingredient[] temp2 = new Ingredient[3];
-            temp2[0] = new Ingredient("Apple");
-            temp2[1] = new Ingredient("Sugar");
-            temp2[2] = new Ingredient("Flour");
-            Recipe tempR2 = new Recipe("Apple Pie", "SHove it in the oven", temp2);
-            tempTree.addRecipe(tempR1);
-            tempTree.addRecipe (tempR2);
-            Ingredient[] toSearch = {new Ingredient("apricot")};
-            Recipe[] tempOutput = (tempTree.searchRecipesInTree(toSearch, 4));*/
+            PantryFileHandler temp = new PantryFileHandler();
+            temp.savePantryToFile(temp1);
+            Ingredient[] temp2 = temp.loadPantry();
+            for(Ingredient i : temp2){
+                System.out.println("Hittade ingrediensen: "+i.getName());
+            }
             RecipeFileReader rfr = new RecipeFileReader();
             ArrayList<Recipe> tempList = rfr.readFile();
-        System.out.println(tempList);
         } catch (FileNotFoundException ex) {
             System.err.println("filen hittads inte.");
         } catch (IOException ex) {
