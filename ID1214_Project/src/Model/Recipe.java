@@ -19,6 +19,7 @@ package Model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  *
@@ -36,6 +37,14 @@ public class Recipe {
         tempSorter.addAll(Arrays.asList(ingredients));
         Collections.sort(tempSorter);
         this.ingredients = tempSorter.toArray(new Ingredient[tempSorter.size()]);
+    }
+    
+    public void setIngredientWeights(HashMap<String,Integer> treeMap){
+        Integer ingredientWeight;
+        for(Ingredient i: ingredients){
+            ingredientWeight = treeMap.getOrDefault(i.getName(),0);
+            i.setWeight((int) ingredientWeight);
+        }
     }
     
     public Ingredient[] getIngredients(){

@@ -22,9 +22,11 @@ package Model;
  */
 public class Ingredient implements Comparable<Ingredient>{
     private String name;
+    private int weight;
     
     public Ingredient(String name){
         this.name = name;
+        weight = 0;
     }
 
     public String getName() {
@@ -34,14 +36,22 @@ public class Ingredient implements Comparable<Ingredient>{
     /**
      * Returns a sorting "weight" comparison between two Ingredient instances.
      * If the calling instance is Heavier, this will return a Negative value.
-     * If both instances are of equal weight this will return 0.
-     * If the calling instance is Lighter, this will return a Positive value.
+ If both instances are of equal weightDiff this will return 0.
+ If the calling instance is Lighter, this will return a Positive value.
      * @param ing the ingredient to compare against.
      * @return the integer value of the Weight difference between the two ingredients.
      */
     @Override
     public int compareTo(Ingredient ing) {
-        return this.getName().compareToIgnoreCase(ing.getName());
+        int weightDiff = ing.weight - this.weight;
+        if (weightDiff == 0)
+            return this.getName().compareToIgnoreCase(ing.getName());
+        else
+            return weightDiff;
+    }
+
+    public void setWeight(int i) {
+        this.weight = i;
     }
     
 }

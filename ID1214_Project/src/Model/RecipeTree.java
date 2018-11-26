@@ -19,6 +19,7 @@ package Model;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Queue;
 
 /**
@@ -27,9 +28,12 @@ import java.util.Queue;
  */
 public class RecipeTree {
     private Node root;
+    private ArrayList<Recipe> recipesInTree;
+    private HashMap<String, Integer> ingredientWeights;
     
     public RecipeTree(){
         root = new Node(new Ingredient("ROOT"));
+        ingredientWeights = new HashMap();
     }
     
     public Recipe[] searchRecipesInTree(Ingredient[] ingredients, int errorMargain){
@@ -77,6 +81,9 @@ public class RecipeTree {
     }
     
     public void addRecipe(Recipe r){
+        recipesInTree.add(r);
+        updateIngredientHashMap(r);
+        sortTree();
         Ingredient[] ingredientsToAdd = r.getIngredients();
         ArrayDeque<Ingredient> ingredients = new ArrayDeque();
         ingredients.addAll(Arrays.asList(ingredientsToAdd));
@@ -111,6 +118,23 @@ public class RecipeTree {
         }
         return n;
     } 
+
+    private void updateIngredientHashMap(Recipe r) {
+        for (Ingredient i : r.getIngredients()){
+            String name = i.getName();
+            Integer temp = ingredientWeights.get(name);
+            if (temp != null){
+                ingredientWeights.put(name, (int)temp + 1);
+            }
+            else{
+                ingredientWeights.put(name, 0);
+            }
+        }
+    }
+
+    private void sortTree() {
+        
+    }
     
     private class Node{
         private Ingredient ingredient;

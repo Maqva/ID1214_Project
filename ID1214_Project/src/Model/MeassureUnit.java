@@ -14,18 +14,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package Temp;
-
-import Model.IcaUrlReader;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+package Model;
 
 /**
  *
+ * @author Sothe
  */
-public class Main {
-    public static void main(String args[]){
-        IcaUrlReader test = new IcaUrlReader();
-        test.getURLIngredients("https://www.ica.se/recept/bananpannkaka-med-chiafron-724233/");
-    }
+public enum MeassureUnit {
+    ML,CL,DL,L,MG,G,HG,KG,TSK,MSK,KRM
 }
