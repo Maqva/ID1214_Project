@@ -30,16 +30,16 @@ public class Pantry {
         inPantry = new ArrayList();
     }
     
-    public void removeIngredients(Ingredient[] toRemove){
+    public void removeIngredients(ArrayList<Ingredient> toRemove){
         for(Ingredient i : toRemove){
             for (int a = 0; a < inPantry.size(); a++){
                 int comparisonWeight = i.compareTo(inPantry.get(a));
                 if(comparisonWeight < 0)
-                    continue;
+                    break;
                 else if (comparisonWeight == 0)
                     inPantry.remove(a);
                 else
-                    break;
+                    continue;
             }
         }
     }
@@ -49,10 +49,7 @@ public class Pantry {
         Collections.sort(inPantry);
     }
     
-    public Ingredient[] getPantryIngredients(){
-        int amt = inPantry.size();
-        if(amt > 0)
-            return inPantry.toArray(new Ingredient[amt]);
-        else return null;
+    public ArrayList<Ingredient> getPantryIngredients(){
+        return inPantry;
     }
 }

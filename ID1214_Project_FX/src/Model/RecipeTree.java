@@ -37,6 +37,8 @@ public class RecipeTree {
         recursiveTreeSearch(root, found, ingredients, 0, errorMargain, 0);
         int foundRecipes = found.size();
         if(foundRecipes > 0){
+            for(Recipe r: found)
+                r.setMissingIngredients(errorMargain - r.getMissedIngredients());
             return found.toArray(new Recipe[foundRecipes]);
         }
         else
@@ -59,21 +61,28 @@ public class RecipeTree {
             }
             if(weight  == 0){
                 if(branch.getNodeRecipe() != null)
-                    recipeList.addAll(branch.getNodeRecipe());
+                    recipeList.addAll(addMarginNumber(branch.getNodeRecipe(), marginError));
                 recursiveTreeSearch(branch, recipeList, ingArray, ingIndex + 1, marginError, matchedIngredientsInBranch + 1);   
             }
-            else if(marginError > 0 && weight > 0){
+            else if (marginError <= 0)
+                return;
+            else if(weight > 0){
                 if(branch.getNodeRecipe() != null && matchedIngredientsInBranch > 0)
-                    recipeList.addAll(branch.getNodeRecipe());
+                    recipeList.addAll(addMarginNumber(branch.getNodeRecipe(), marginError));
                 recursiveTreeSearch(branch, recipeList, ingArray, ingIndex, marginError - 1, matchedIngredientsInBranch);
             }
             else{
                 if(branch.getNodeRecipe() != null && matchedIngredientsInBranch > 0)
-                    recipeList.addAll(branch.getNodeRecipe());
+                    recipeList.addAll(addMarginNumber(branch.getNodeRecipe(), marginError));
                 return;
             }
-        }
-        
+            }
+    }
+    
+    private ArrayList<Recipe> addMarginNumber(ArrayList<Recipe> listToAdd, int errorMargain){
+        for(Recipe r : listToAdd)
+            r.setMissingIngredients(errorMargain);
+        return listToAdd;
     }
     
     public void addRecipe(Recipe r){

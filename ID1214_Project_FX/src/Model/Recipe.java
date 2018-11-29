@@ -28,6 +28,7 @@ public class Recipe {
     private Ingredient[] ingredients;
     private String instructions;
     private String name;
+    private int missingIngredients;
     
     public Recipe(String name, String instructions, Ingredient[] ingredients){
         this.name = name;
@@ -48,5 +49,20 @@ public class Recipe {
     
     public String getInstructions(){
         return instructions;
+    }
+    
+    public void setMissingIngredients(int input){
+        missingIngredients = input;
+    }
+    
+    public int getMissedIngredients(){
+        return missingIngredients;
+    }
+    
+    @Override
+    public String toString(){
+        String output = "";
+        output += (name);
+        return output;
     }
 }
