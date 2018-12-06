@@ -1,2 +1,11 @@
-Apple
-Orange
+apple
+apricot
+banana
+bun
+egg
+lagna plate
+minced beef
+new test: More egg
+onion
+orange
+test: egg

@@ -36,7 +36,7 @@
                         <TextArea fx:id="recipeInstructionField" layoutX="22.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" />
                         <TextArea fx:id="recipeIngredientField" layoutX="262.0" layoutY="128.0" prefHeight="200.0" prefWidth="104.0" />
                         <TextField fx:id="recipeNameField" layoutX="417.0" layoutY="128.0" />
-                        <Button fx:id="recipeSaveButton" layoutX="427.0" layoutY="228.0" mnemonicParsing="false" onAction="#saveRecipe" prefHeight="43.0" prefWidth="141.0" text="Save Recipe" />
+                        <Button fx:id="recipeSaveButton" layoutX="427.0" layoutY="228.0" mnemonicParsing="false" onAction="#getRecipeFromUser" prefHeight="43.0" prefWidth="141.0" text="Save Recipe" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -44,18 +44,19 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="errorMargainField" layoutX="201.0" layoutY="316.0" />
-                        <Button fx:id="recipeSearchButton" layoutX="14.0" layoutY="311.0" mnemonicParsing="false" onAction="#searchRecipes" prefHeight="41.0" prefWidth="157.0" text="Search" />
+                        <TextField fx:id="errorMargainField" layoutX="220.0" layoutY="316.0" />
+                        <Button fx:id="recipeSearchButton" layoutX="14.0" layoutY="311.0" mnemonicParsing="false" onAction="#searchRecipes" prefHeight="40.0" prefWidth="160.0" text="Search" />
                         <ScrollPane layoutX="14.0" layoutY="14.0" prefHeight="290.0" prefWidth="280.0">
                            <content>
                               <VBox fx:id="foundRecipesBox" prefHeight="285.0" prefWidth="275.0" />
                            </content>
                         </ScrollPane>
-                        <ScrollPane layoutX="320.0" layoutY="14.0" prefHeight="290.0" prefWidth="280.0">
+                        <ScrollPane layoutX="346.0" layoutY="14.0" prefHeight="290.0" prefWidth="280.0">
                            <content>
-                              <TextFlow fx:id="selectedRecipeFlow" prefHeight="285.0" prefWidth="250.0" />
+                              <TextFlow fx:id="selectedRecipeFlow" prefHeight="285.0" prefWidth="275.0" />
                            </content>
                         </ScrollPane>
+                        <Button fx:id="cookButton" layoutX="466.0" layoutY="311.0" mnemonicParsing="false" onAction="#emptyPantry" prefHeight="40.0" prefWidth="160.0" text="Cook" />
                      </children></AnchorPane>
               </content>
             </Tab>

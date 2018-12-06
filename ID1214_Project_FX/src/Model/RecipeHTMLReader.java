@@ -22,46 +22,67 @@ import java.util.regex.Pattern;
 
 /**
  *
- * @author Sothe
+ * @author Magnus, Patrik.
  */
 public class RecipeHTMLReader {
-     private static final String INIT_RECIPE_LIST_PATTERN = "\"ingredients__list\"";
-    private static final String INGREDIENT_PATTERN = "amount=\"(\\d+[\\.\\d]\\d*)\".+type=\"(.*)\">(?:\\d+ *\\d*)* (?:\\2 )*(.+)</s";
+    private final static String RECIPE_NAME_HEADER = "<h1 class=\"recipepage__headline\">(.+)</h1>";
+    private final static String INSTRUCTIONS_START = "<div class=\"howto-steps";
+    private final static String INSTRUCTION_LINE = "cooking-step__content__instruction\">(.+)</div";
+    private final static String INSTRUCTIONS_END = "<h3>";
+     private static final String INIT_RECIPE_LIST_PATTERN = "<ul class=\"ingredients__list\">";
+    private static final String INGREDIENT_PATTERN = "amount=\"(\\d+[\\.\\d]\\d*)\".+type=\"(.*)\">(?:\\d+ )*(?:\\2 )*(.+)</s";
     private static final String LIST_END_PATTERN = "</ul>";
     
+    /**
+     * 
+     * @param htmlContent
+     * @return 
+     */
     public Recipe getURLIngredients(String[] htmlContent){
-        try {
-            Pattern listInitPattern = Pattern.compile(INIT_RECIPE_LIST_PATTERN);
-            Pattern listIngredientItemPattern = Pattern.compile(INGREDIENT_PATTERN);
-            Pattern listEnd = Pattern.compile(LIST_END_PATTERN);
-            ArrayList<Ingredient> ingList = new ArrayList();
-            int inList = 0;
-            for(String s : htmlContent){
-                //System.out.println(s);
-                if(inList == 0){
-                    if (listInitPattern.matcher(s).find()){
-                        System.out.println("Hittade ingrediens listan.");
-                        inList = 1;
-                    }
+        Pattern listIngredientItemPattern = Pattern.compile(INGREDIENT_PATTERN);
+        Pattern instructionPattern = Pattern.compile(INSTRUCTION_LINE);
+        Pattern recName = Pattern.compile(RECIPE_NAME_HEADER);
+        ArrayList<Ingredient> ingList = new ArrayList();
+        String recipeName = "";
+        String instructions = "";
+        int[] inList = new int[2];
+        for(String s : htmlContent){
+            if(recipeName.length() == 0 && s.matches(RECIPE_NAME_HEADER)){
+                Matcher m = recName.matcher(s);
+                m.find();
+                recipeName = m.group(1);
+            }
+            if(inList[0] == 0 && inList[1] == 0){
+                if (s.matches(INIT_RECIPE_LIST_PATTERN))
+                    inList[0] = 1;
+                else if(s.matches(INSTRUCTIONS_START))
+                    inList[1] = 1;
+            }
+            else if (inList[0] == 1){
+                Matcher ingredient = listIngredientItemPattern.matcher(s);
+                if(ingredient.find()){
+                    Ingredient ing = new Ingredient(ingredient.group(3));
+                    boolean exists = false;
+                    for(Ingredient e : ingList)
+                        if(e.compareTo(ing) == 0)
+                            exists = true;
+                    if(!exists)
+                        ingList.add(ing);
                 }
-                else{
-                    Matcher ingredient = listIngredientItemPattern.matcher(s);
-                    System.out.println("Läser rad: "+s);
-                    if(ingredient.find()){
-                        System.out.print("****hittade; Antal: \""+ingredient.group(1)+"\" mängd typ: \""+ingredient.group(2)+"\" ingrediens: \""+ingredient.group(3)+"\"\n");
-                        ingList.add(new Ingredient(ingredient.group(3)));
-                    }
-                    else if (listEnd.matcher(s).find()){
-                        inList = 0;
-                        System.out.println("Lämnade ingrediens listan.");
-                    }
+                else if (s.matches(LIST_END_PATTERN)){
+                    inList[0] = 0;
                 }
             }
-            return null;
-        } 
-        catch (Exception ex) {
-            System.err.println("Något gick fel.");
-            return null;
+            else if (inList[1] == 1){
+                Matcher instruction = instructionPattern.matcher(s);
+                if(instruction.find()){
+                    instructions += instruction.group(1);
+                }
+                else if(s.matches(INSTRUCTIONS_END))
+                    inList[1] = 0;
+            }
         }
+        Recipe output = new Recipe(recipeName, instructions, ingList.toArray(new Ingredient[1]));
+        return output;
     }
 }

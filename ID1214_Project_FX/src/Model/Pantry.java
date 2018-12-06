@@ -21,7 +21,7 @@ import java.util.Collections;
 
 /**
  *
- * @author Magnus
+ * @author Magnus, Patrik.
  */
 public class Pantry {
     private ArrayList<Ingredient> inPantry;
@@ -30,6 +30,10 @@ public class Pantry {
         inPantry = new ArrayList();
     }
     
+    /**
+     * 
+     * @param toRemove 
+     */
     public void removeIngredients(ArrayList<Ingredient> toRemove){
         for(Ingredient i : toRemove){
             for (int a = 0; a < inPantry.size(); a++){
@@ -44,11 +48,19 @@ public class Pantry {
         }
     }
     
+    /**
+     * 
+     * @param ing 
+     */
     public void addIngredient(Ingredient ing){
         inPantry.add(ing);
         Collections.sort(inPantry);
     }
     
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<Ingredient> getPantryIngredients(){
         return inPantry;
     }

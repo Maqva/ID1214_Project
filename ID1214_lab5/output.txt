@@ -1,0 +1,11 @@
+
+Sentence #1 (6 tokens):
+Nu skriver jag en test.
+
+Tokens:
+[Text=Nu CharacterOffsetBegin=0 CharacterOffsetEnd=2 PartOfSpeech=NN Lemma=nu]
+[Text=skriver CharacterOffsetBegin=3 CharacterOffsetEnd=10 PartOfSpeech=NN Lemma=skriver]
+[Text=jag CharacterOffsetBegin=11 CharacterOffsetEnd=14 PartOfSpeech=NN Lemma=jag]
+[Text=en CharacterOffsetBegin=15 CharacterOffsetEnd=17 PartOfSpeech=IN Lemma=en]
+[Text=test CharacterOffsetBegin=18 CharacterOffsetEnd=22 PartOfSpeech=NN Lemma=test]
+[Text=. CharacterOffsetBegin=22 CharacterOffsetEnd=23 PartOfSpeech=. Lemma=.]

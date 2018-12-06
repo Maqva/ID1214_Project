@@ -18,15 +18,23 @@ package Model;
 
 /**
  *
- * @author Magnus
+ * @author Magnus, Patrik.
  */
 public class Ingredient implements Comparable<Ingredient>{
     private String name;
     
+    /**
+     * 
+     * @param name 
+     */
     public Ingredient(String name){
         this.name = name;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getName() {
         return name;
     }

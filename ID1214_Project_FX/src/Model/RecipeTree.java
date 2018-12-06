@@ -49,23 +49,35 @@ public class RecipeTree {
             int ingIndex, int marginError, int matchedIngredientsInBranch){
         for(Node branch : n.getNodeBranches()){
             int weight;
-            if(ingIndex < ingArray.length)
+            //Compare currently looked at Pantry Ingredient to ingredient in branch
+            if(ingIndex < ingArray.length){
                 weight = ingArray[ingIndex].compareTo(branch.getNodeIngredient());
-            else
-                weight = 1;
-            if(weight < 0){
-                while (weight < 0 && ingIndex < ingArray.length - 1){
-                    ingIndex ++;
-                    weight = ingArray[ingIndex].compareTo(branch.getNodeIngredient());
+                 //If Current pantry item has been passed and branch now has a Heavier ingredient, itterate through pantry until a the same or a heavier
+                //ingredient is found, or end of pantry is reached.
+                if(weight < 0){
+                    while (weight < 0 && ingIndex < ingArray.length){
+                        ingIndex ++;
+                        if(ingIndex >= ingArray.length)
+                            weight = 1;
+                        else
+                            weight = ingArray[ingIndex].compareTo(branch.getNodeIngredient());
+                    }
                 }
             }
+            //Else: if branch has gone past all Ingredients in pantry
+            else
+                weight = 1;
+            //If Pantry and Branch Ingredient are the same: go deeper in search 
+            //without decrementing marginOfError, increase index by 1 becasue the ingredient was found.
             if(weight  == 0){
                 if(branch.getNodeRecipe() != null)
                     recipeList.addAll(addMarginNumber(branch.getNodeRecipe(), marginError));
                 recursiveTreeSearch(branch, recipeList, ingArray, ingIndex + 1, marginError, matchedIngredientsInBranch + 1);   
             }
+            //If the entire error margin has been used up, return and cancel this search.
             else if (marginError <= 0)
                 return;
+            //If the Ingredient is Not the same, go deeper in search but decrement MarginOfError once.
             else if(weight > 0){
                 if(branch.getNodeRecipe() != null && matchedIngredientsInBranch > 0)
                     recipeList.addAll(addMarginNumber(branch.getNodeRecipe(), marginError));

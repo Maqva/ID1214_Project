@@ -27,14 +27,19 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Magnus
+ * @author Magnus, Patrik.
  */
 public class RecipeFileHandler {
     
     private final String FILE_PATH = "src/model/recipes.txt";
     private final String NEWLINE_DELIMITER ="##";
     
-    
+    /**
+     * 
+     * @param toSave
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     public void saveRecipeToFile(ArrayList<Recipe> toSave) throws FileNotFoundException, IOException{
         PrintWriter outputWriter = new PrintWriter(new BufferedWriter(new FileWriter(FILE_PATH)));
         for(Recipe r : toSave){
@@ -49,6 +54,11 @@ public class RecipeFileHandler {
         outputWriter.close();
     }
     
+    /**
+     * 
+     * @return
+     * @throws IOException 
+     */
     public ArrayList<Recipe> readFile() throws IOException{
         ArrayList<Recipe> recipesRead = new ArrayList();
         BufferedReader bfr = new BufferedReader( new FileReader(FILE_PATH));

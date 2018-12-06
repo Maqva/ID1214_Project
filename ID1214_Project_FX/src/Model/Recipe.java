@@ -22,7 +22,7 @@ import java.util.Collections;
 
 /**
  *
- * @author Magnus
+ * @author Magnus, Patrik.
  */
 public class Recipe {
     private Ingredient[] ingredients;
@@ -30,6 +30,12 @@ public class Recipe {
     private String name;
     private int missingIngredients;
     
+    /**
+     * 
+     * @param name
+     * @param instructions
+     * @param ingredients 
+     */
     public Recipe(String name, String instructions, Ingredient[] ingredients){
         this.name = name;
         this.instructions = instructions;
@@ -39,26 +45,49 @@ public class Recipe {
         this.ingredients = tempSorter.toArray(new Ingredient[tempSorter.size()]);
     }
     
+    /**
+     * 
+     * @return 
+     */
     public Ingredient[] getIngredients(){
         return ingredients;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public String getName() {
         return name;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public String getInstructions(){
         return instructions;
     }
     
+    /**
+     * 
+     * @param input 
+     */
     public void setMissingIngredients(int input){
         missingIngredients = input;
     }
     
+    /**
+     * 
+     */
     public int getMissedIngredients(){
         return missingIngredients;
     }
     
+    /**
+     * 
+     * @return 
+     */
     @Override
     public String toString(){
         String output = "";

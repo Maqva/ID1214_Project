@@ -26,11 +26,16 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 /**
  *
- * @author Magnus
+ * @author Magnus, Patrik.
  */
 public class PantryFileHandler{
     private final String FILE_PATH = "src/model/pantry.txt";
     
+    /**
+     * 
+     * @param toSave
+     * @throws IOException 
+     */
     public void savePantryToFile(ArrayList<Ingredient> toSave) throws IOException{
         PrintWriter outputWriter = new PrintWriter(new BufferedWriter(new FileWriter(FILE_PATH)));
         for(Ingredient i : toSave){
@@ -41,6 +46,12 @@ public class PantryFileHandler{
         outputWriter.close();
     }
     
+    /**
+     * 
+     * @return
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     public ArrayList<Ingredient> loadPantry() throws FileNotFoundException, IOException{
         BufferedReader bfr = new BufferedReader(new FileReader(FILE_PATH));
         String line = bfr.readLine();
