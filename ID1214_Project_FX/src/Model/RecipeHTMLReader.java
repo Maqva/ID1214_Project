@@ -26,12 +26,12 @@ import java.util.regex.Pattern;
  */
 public class RecipeHTMLReader {
     private final static String RECIPE_NAME_HEADER = "<h1 class=\"recipepage__headline\">(.+)</h1>";
-    private final static String INSTRUCTIONS_START = "<div class=\"howto-steps";
-    private final static String INSTRUCTION_LINE = "cooking-step__content__instruction\">(.+)</div";
-    private final static String INSTRUCTIONS_END = "<h3>";
+    private final static String INSTRUCTIONS_START = ".+recipe-howto-steps.+";
+    private final static String INSTRUCTION_LINE = "<ol><li>(.+)</li></ol>";
+    private final static String INSTRUCTIONS_END = "</howto-steps>";
      private static final String INIT_RECIPE_LIST_PATTERN = "<ul class=\"ingredients__list\">";
-    private static final String INGREDIENT_PATTERN = "amount=\"(\\d+[\\.\\d]\\d*)\".+type=\"(.*)\">(?:\\d+ )*(?:\\2 )*(.+)</s";
-    private static final String LIST_END_PATTERN = "</ul>";
+    private static final String INGREDIENT_PATTERN = "amount=\"(\\d+[\\.\\d]\\d*)\".+type=\"(.*)\">(?:\\d+ \\2)*(.+)</s";
+    private static final String ING_LIST_END = "</ul>";
     
     /**
      * 
@@ -55,13 +55,18 @@ public class RecipeHTMLReader {
             if(inList[0] == 0 && inList[1] == 0){
                 if (s.matches(INIT_RECIPE_LIST_PATTERN))
                     inList[0] = 1;
-                else if(s.matches(INSTRUCTIONS_START))
+                else if(s.matches(INSTRUCTIONS_START)){
                     inList[1] = 1;
+                    System.out.println("hittade instruktioner");
+                }
             }
             else if (inList[0] == 1){
                 Matcher ingredient = listIngredientItemPattern.matcher(s);
                 if(ingredient.find()){
-                    Ingredient ing = new Ingredient(ingredient.group(3));
+                    String ingredientName = ingredient.group(3);
+                    ingredientName = ingredientName.replaceAll("[("+ingredient.group(2)+")(\\d+ "+ingredient.group(2)+")(\\d+/\\d+ "+ingredient.group(2)+")(\\(.+\\)]", "");
+                    ingredientName = ingredientName.trim();
+                    Ingredient ing = new Ingredient(ingredientName);
                     boolean exists = false;
                     for(Ingredient e : ingList)
                         if(e.compareTo(ing) == 0)
@@ -69,19 +74,27 @@ public class RecipeHTMLReader {
                     if(!exists)
                         ingList.add(ing);
                 }
-                else if (s.matches(LIST_END_PATTERN)){
+                else if (s.matches(ING_LIST_END)){
                     inList[0] = 0;
                 }
             }
             else if (inList[1] == 1){
                 Matcher instruction = instructionPattern.matcher(s);
                 if(instruction.find()){
-                    instructions += instruction.group(1);
+                    String[] allInstructions = instruction.group(1).split("</li><li>");
+                    for(String instructionLine : allInstructions){
+                        instructionLine = instructionLine.replaceAll("&auml;", "ä");
+                        instructionLine = instructionLine.replaceAll("&ouml;", "ö");
+                        instructionLine = instructionLine.replaceAll("&aring;", "å");
+                        System.out.println("lägger till instruktionen: "+instructionLine);
+                        instructions += (instructionLine+"\n");
+                    }
                 }
                 else if(s.matches(INSTRUCTIONS_END))
                     inList[1] = 0;
             }
         }
+        System.out.println("skrev instruktionerna: "+instructions);
         Recipe output = new Recipe(recipeName, instructions, ingList.toArray(new Ingredient[1]));
         return output;
     }

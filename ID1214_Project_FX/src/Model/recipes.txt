@@ -1,39 +1,39 @@
-﻿fruit sallad
-chop fruit and mix together.
-apple,banana,blueberry,kiwi,lemon,mango,orange,
-hot dogs
-boil or fry the hotdog and put it in the bun, add rest on top.
-bun,custard,hotdog,ketchup,
-lasagna
-mix sauce, minced meat and lasagna plates and cook in oven
-flour,garlic,lasagna plates,milk,minced meat,onion,
-Test
-blah##newline##newerlone
-Apple,Crab,Pasta,
-LongTest
-Detta är instruktionsältet##..... tror jag.
-afeaf,apple,banana,bun,ew,ew,ewg,ewg,ewg,ewg,g,geewg,gew,gew,gews,gwe,hotdog,orange,reg,sg,we,weg,weg,wesg,wesg,
-Sneppet mindre recept
-testar med lite mindre##förhoppningsvis
-10t,1t,2t,3t,4t,5t,6t,7t,8t,9t,
-Sneppet mindre recept
-testar med lite mindre##förhoppningsvis
-10t,1t,2t,3t,4t,5t,6t,7t,8t,9t,
-Sneppet mindre recept
-testar med lite mindre##förhoppningsvis
-10t,1t,2t,3t,4t,5t,6t,7t,8t,9t,
-Sneppet mindre recept
-testar med lite mindre##förhoppningsvis
-10t,1t,2t,3t,4t,5t,6t,7t,8t,9t,
-Sneppet mindre recept
-testar med lite mindre##förhoppningsvis
-10t,1t,2t,3t,4t,5t,6t,7t,8t,9t,
-Sneppet mindre recept
-testar med lite mindre##förhoppningsvis
-10t,1t,2t,3t,4t,5t,6t,7t,8t,9t,
-testR
-Nytt Recept##testar bara lite
-blep blägh,egg,
-testA
-nytt test
-egg,gh,h,
+Lövbiff med persiljesmör och broccoli
+Sätt ugnen på 225&deg;C och sätt in en ugnsplåt.##Dela potatisen i mindre bitar. Blanda potatisen med hälften av oljan och krydda med salt och peppar.##Rosta potatisen på den förvärmda plåten i ca 20 minuter.##Ansa och skär broccolin i bitar. Rosta den med potatisen när det återstår 10 minuter av tiden.##Stek lövbiffen hastigt i resten av oljan och krydda med salt och peppar.##Servera lövbiffen med potatis, broccoli och persiljesmör.##
+broccoli,lövbiff,olja,peppar,portpersiljesmör,potatis,salt,
+Lövbiff med potatisgratäng och cosmopolitansallad
+Värm potatisgratängen enligt anvisningen på förpackningen.##Skär salladen i bitar och skala och skiva löken.##Blanda olja, vinäger och senap. Blanda dressingen med salladen och löken.##Stek köttet i riktigt het panna i oljan och krydda med salt och peppar.##Servera gratängen till lövbiff och sallad.##
+cosmopolitansallad,dijonenap,olja,peppar,portfärdigpotatisgratäng,portlövbiff,rödlök,rödvinvinäger,salt,
+Oreganostekt lövbiff med fetaostkräm och tomat
+Koka riset enligt anvisningen på förpackningen.##<strong>Fetaostkräm: </strong>Smula fetaosten och blanda med yoghurten och smaka av med salt och peppar.##<strong>Tomater:</strong> Dela tomaterna och blanda med olivolja och vinäger och krydda med salt och peppar. Hacka persiljan och vänd ner i tomaterna. Skär salladen i bitar.##<strong>Lövbiff:</strong> Stek bönorna i hälften av oljan i en stekpanna, krydda med salt och peppar. Lyft upp bönorna och strimla lövbiffen och stek den i resten av oljan. Krydda med oregano, salt och peppar.##Servera lövbiffen med ris, tomater, sallad och fetaostkräm.##
+askfärskpersiljaàg,calövbiff,fetaost,förpharicotsvertsàg,matyoghurt,olivolja,olja,oradoregano,peppar,portris,pärltomaterellerbabyplommontomater,romansallad,rödvinvinäger,salt,
+Burrito med guacamole och färska grönsaker
+<strong>Burrito: </strong>Strimla lövbiff och paprika.##Bryn lövbiffen i matfettet. Tillsätt vatten, paprika och kryddmix.##Stek färdigt under omrörning i ca 2-3 minuter.##<strong>Guacamole:</strong> Blanda guacamolen genom att mosa avokado och blanda med kryddmix och gräddfil.##<strong>Tillbehör: </strong>Värm tortillabröden och fyll dem med lövbiff och tillbehör.##Rulla ihop till en burrito.##
+avokado,gräfi,isbergssallad,lövbiff,mediumstoratortillabröd,paprika,påseBurritoSpicekryddmixàg,påsedipmixGuacamoleàg,tacosåsmedium,tomat,vatten,örellerolja,
+Sojamarinerad svamp med lövbiff och sesammajonnäs
+<strong>Svamp:</strong> Blanda socker, soja, sambal oelek och vinäger i en skål.##Ansa och skiva champinjonerna. Skala och skiva löken och strimla pak choien. Blanda champinjoner och lök med dressingen.##Koka riset enligt anvisningen på förpackningen.##<strong>Majonnäs:</strong> Rosta sesamfröna i en torr stekpanna på medelvärme. Hacka gräslöken fint och blanda med majonnäsen och sesamfröna.##<strong>Lövbiff: </strong>Krydda lövbiffen med salt och peppar. Stek den i oljan i en stekpanna.##Blanda pak choi med den marinerade svampen och servera med lövbiff, majonnäs och ris.##
+al,ambaloele,askfärskgräslökàg,champinjoner,eafrön,japanoja,lövbiff,majonnäs,olja,pakchoi,portris,rödlök,svatpeppa,tröocer,vitvinvinäger,
+Pasta med lövbiff i tomatsås och basilika
+Sätt på vatten till pastan.##Strimla lövbiffen och bryn i oljan i en stekpanna. Salta och peppra och häll över pastasåsen och cr&egrave;me fraichen. Låt sjuda några minuter.##Dela tomaterna och grovhacka basilikan.&nbsp;##Koka pastan, servera den med tomater, basilika och lövbiffen.##
+burkpastasåsgärnaricottaochtomat,àg,calövbiff,crèmefraiche,förpkörsbärstomateràg,krukabasilika,olja,portfärskpastagärnafusilli,saltochpeppar,
+Kycklingwok med Soy & Sweet Chili
+Bryn den strimlade kycklingen i oljan.##Tillsätt de strimlade grönsakerna och woka eller stek på hög värme i 1-2 minuter.##Häll i woksåsen och rör om.##<strong>Till servering: </strong>Garnera med sesamfrön och servera med nudlar eller ris.##
+atolja,flaskawoksåsàml,gärnaAsianWokSoy&SweetChili,portrisnudlarellerris,strimladesockerärtor,strimladkycklin,strimladrödpaprika,strimladvitkål,
+Kycklingrullader
+Sätt ugnen på 150˚C.##Skala och finhacka löken. Fräs hacket mjukt i smöret i en stekpanna tillsammans med kryddnejlika och salt och peppar.##Mixa fikon, mandel och kapris. Blanda mixet med den frästa löken.##Lägg kycklingfil&eacute;erna en och en mellan plastfolie. Banka ut fil&eacute;erna med botten på en kastrull eller en kavel (till ca 2-3 mm tjocka skivor).&nbsp; Lägg en klick av fyllningen på varje fil&eacute;. Rulla ihop till en rullad och fäst skarven med en tandpetare. Bryn rulladerna runt om i smöret.##Lägg rulladerna i en ugnssäker form och sätt in mitt i ugnen 5-6 minuter. ##<strong>Till servering:</strong> Servera med cumberlandsås och sallad.##
+aldyddnejlia,apri,casmåfinafiléeravkycklin,cumberlandsås,gulalökar,peppar,sallad,salt,skaamane,torkadefikon,ör,
+Tjocka revbensspjäll med asiatisk kålsallad
+Sätt ugnen på 150&deg;C.##<strong>Revben:</strong> Skär revbensspjällen i portionsbitar.&nbsp;&nbsp;##Blanda en marinad på vinäger, honung, soja, olja, svartpeppar och mald ingefära.&nbsp;##Vänd revbenen i marinaden, lyft upp och lägg dem på en ugnsplåt. Spara marinaden. Sätt in plåten mitt i ugnen ca 1 timme, tills innertemperaturen på revbenen är 85&deg;C. Vänd dem då och då.##<strong>Kålsallad:</strong> Ansa och strimla kålen. Dela, kärna ur och strimla chilin fint. Hyvla moroten i långa remsor med en potatisskalare. Plocka bladen av koriandern och strimla dem.&nbsp;&nbsp;##Pressa saften ur limen. Blanda limesaft, olja, sesamolja, honung, ättika och salt till en dressing. Vänd ner kålen, chilin, morotsstrimlorna, koriandern och böngroddar i dressingen.&nbsp;##<strong>Revben:</strong> Ta ut plåten och häll över resten av marinaden. Strö över sesamfrön.&nbsp;##Höj temperaturen i ugnen till 200&deg;C. Sätt in revbenen i ugnen igen ca 10 minuter tills dess att revbenen har fått fin färg.&nbsp;##Servera revbenen med salladen.##
+balavinäger,böngroar,eafrö,eaolja,honung,krukakoriander,lime,maldingefära,morot,oja,olja,rödchili,salladskål,salt,soja,svatpeppa,tjocarevbensspjäll,äia%,
+Vegansk paj med svamp och zucchini
+<strong>Pajdeg:</strong> Skär margarinet i bitar. Lägg mjöl och margarin i en matberedare och mixa snabbt ihop till en smulig massa, eller blanda för hand. Tillsätt vatten och salt. Arbeta ihop till en deg.##Tryck ut degen i en pajform, ca 26 cm i diameter (för 4 port). Ställ pajen i kylskåpet i 30 minuter.&nbsp;##Sätt ugnen på 225&deg;C.&nbsp;##För att stabilisera kanterna på pajen; tryck ner folie i botten och upp över kanten på formen. Förgrädda pajskalet mitt i ugnen i 10 minuter. Ta därefter bort folien.&nbsp;##<strong>Fyllning:</strong> Skala och hacka rödlöken. Skala och riv vitlöken. Skär zucchinin i ca 1x1 cm stora kuber. Ansa och skiva champinjonerna.&nbsp;##Fräs champinjonerna och zucchinin i olivolja i en stekpanna ca 5 minuter. Tillsätt lök och vitlök, krydda med timjan, salt och peppar och fräs några minuter till.&nbsp;&nbsp;##Koka upp havregrädde och maizena.&nbsp;&nbsp;##Blanda de frästa grönsakerna med havregrädden och osten. Häll blandningen i pajskalet.&nbsp;&nbsp;##Grädda i mitt i ugnen ca 30 minuter eller tills pajen fått färg. Låt pajen stå minst 1 timme före servering. ##<strong>Till servering: </strong>Servera gärna med en sallad. ##
+ajtärele,al,alltvatten,havregräe%,kastanjechampinjoner,malenvarpeppar,mjölkfrittmararin,olivoljatillstekning,oradimjan,rödlökar,sallad,salt,siktatinkemjöeervetemjö,veanskost,vitlöksklyftor,zucchiniàcag,
+Köttbullar med rostad lök
+Blanda alla ingredienser och rulla till ca 35 små köttbullar (för 35 st).##Stek i olja och smör tills de får färg och är genomstekta 5&ndash;10 minuter. ##
+al,blandfärs,dijonenap,rapsoljatillstekning,rostaök,smörtillstekning,stortägg,varpeppar,
+Gyoza med tofu, shiitakesvamp och ingefära
+Blanda sesamolja, vitlök, ingefära, socker, soja och majsstärkelse. Värm en stekpanna och häll ner blandningen. Låt koka upp och smula sedan ner tofun i små bitar. Stek på medeltemperatur ca 5 minuter. Tillsätt svampen och salladslöken, stek i ytterligare 3-5 minuter tills all vätska från svampen kokat bort. Låt svalna.##Fyll upp en liten skål med vatten. Lägg några dumplingsdegark på köksbänken. Lägg ca 1 tsk fyllning i mitten på arken. Fukta ena sidan av arken med lite vatten, vik över och tryck ihop kanterna till en halvmåne. Finast blir det om du får till veck där kanterna möts. Lägg gyozan på ett fat och täck med en fuktig kökshandduk så de inte torkar.##Hetta upp lite olja i en stekpanna med lock. Stek gyozan på medelhög värme ca 2 minuter tills de fått fin färg, häll därefter försiktigt i 1 dl vatten och lägg på locket. När vattnet ångat bort efter 3-5 minuter låter du gyozan steka tills undersidan är frasig igen.##
+eaolja,finskurnasalladslökar,japanoja,majärele,naturellfasttofu,paketfrystwontondegdumplingdegàcastark,riveningefära,rivenvitlöksklyfta,rovhackadeshiitakesvamp,tröocer,
+Snabblagad pizza med tacotopping
+Sätt ugnen på 250&deg;C.##Halvera tomaterna. Häll av majsen.##Grädda pizzan mitt i ugnen ca 8 minuter.##Vid servering toppa pizzan med tomater och majs. Krossa nachochipsen och strö över pizzan.##
+cocktailtomater,färskpizzamedpestoochmozzarellaàcag,majs,nachochips,
